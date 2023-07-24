@@ -78,7 +78,7 @@ export default function App() {
         />
         {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
         <Button onClick={handleShowAddFriend}>
-          {showAddFriend ? "Close" : "Add Friend"}
+          {showAddFriend ? "Tutup" : "Tambah Teman"}
         </Button>
       </div>
       {selectedFriend && (
@@ -125,7 +125,7 @@ function Friend({ friend, onSelected, selectedFriend }) {
       )}
       {friend.balance === 0 && <p>Kamu dan {friend.name} tidak ada hutang</p>}
       <Button onClick={() => onSelected(friend)}>
-        {isSelected ? "Close" : "Select"}
+        {isSelected ? "Tutup" : "Pilih"}
       </Button>
     </li>
   );
@@ -154,21 +154,21 @@ function FormAddFriend({ onAddFriend }) {
 
   return (
     <form action="" className="form-add-friend" onSubmit={handleSubmit}>
-      <label htmlFor="">🙎🏼 Name</label>
+      <label htmlFor="">🙎🏼Nama</label>
       <input
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
 
-      <label htmlFor="">📸 Image URL</label>
+      <label htmlFor="">📸Gambar</label>
       <input
         type="text"
         value={image}
         onChange={(e) => setImage(e.target.value)}
       />
 
-      <Button>Add</Button>
+      <Button>Tambah</Button>
     </form>
   );
 }
@@ -187,16 +187,16 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
 
   return (
     <form action="" className="form-split-bill" onSubmit={handleSubmit}>
-      <h2>Split a bill with {selectedFriend.name}</h2>
+      <h2>Patungan bareng {selectedFriend.name}</h2>
 
-      <label htmlFor="">💵 Bill value</label>
+      <label htmlFor="">💵 Total Biaya</label>
       <input
         type="text"
         value={amount}
         onChange={(e) => setAmount(Number(e.target.value))}
       />
 
-      <label htmlFor="">🙋🏼‍♂️Your expense</label>
+      <label htmlFor="">🙋🏼‍♂️Pengeluaran Kamu</label>
       <input
         type="text"
         value={bill}
@@ -207,19 +207,19 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
         }
       />
 
-      <label htmlFor="">🙋🏼 {selectedFriend.name}'s expense</label>
+      <label htmlFor="">🙋🏼Pengeluaran {selectedFriend.name}</label>
       <input type="text" disabled value={friendBill} />
 
-      <label htmlFor="">🤑 Who is paying the bill</label>
+      <label htmlFor="">🤑 Ditalangin sama</label>
       <select
         value={whoIsPaying}
         onChange={(e) => setWhoIsPaying(e.target.value)}
       >
-        <option value="user">You</option>
+        <option value="user">Kamu</option>
         <option value="friend">{selectedFriend.name}</option>
       </select>
 
-      <Button>Add</Button>
+      <Button>Tambah</Button>
     </form>
   );
 }
